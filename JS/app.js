@@ -1,1 +1,4 @@
-document.querySelector('video').play();
+window.onload = function(){
+    document.querySelector('video').play();
+}
+
