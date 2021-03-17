@@ -12,7 +12,7 @@
     <div class="quoture-main-conatiner">
         <div class="intro-display-container">
             <div class="intro-display-wrapper">
-                <img src="img/main-logo.svg" alt="">
+                <img src="img/main-logo.svg" alt="Main logo">
                 <h1>Quoture</h1>
                 <p>Create an inspirational quote in just seconds.</p>
                 <button class="begin">Let&lsquo;s Begin</button>
@@ -20,8 +20,8 @@
             <div class="intro-display-background"></div>
             <video width="1024" autoplay loop>
                 <source src="video/typing-video.mp4" type="video/mp4">
-              </video>
-        </div>
+            </video>
+        </div> <!-- End of intro-display-container -->
         <div class="select-background-theme">
             <div class="left-area">
                 <div class="left-area-wrapper">
@@ -70,11 +70,11 @@
                         <div class="theme-line"></div>
                         <img class="theme-image" src="img/water.jpg" alt="Water">
                     </div>
-                </div>
+                </div> <!-- End of left-area-wrapper -->
                 <div class="special-thank-you">
                     <img src="img/camera-icon.svg" alt="Camera"><p>A special thank you to the talented photographers on <a href="https://unsplash.com/" target="_blank">Unsplash.com</a> for supplying these beautiful images.</p>
                 </div>
-            </div>
+            </div> <!-- End of left-area -->
             <div class="right-area">
                 <div class="color-picker"></div>
                 <div class="colors-wrapper">
@@ -89,9 +89,9 @@
                 <input type="color" class="inputColor" name="inputColor" id="inputColor" value="#299592">
                 <a href="#" class="next-page"><img src="/img/next.svg" alt="Next Icon"></a>
             </div>
-        </div>
+        </div> <!-- End of select-background-theme -->
         <div class="create-quote">
-            <img class="main-quote-image" src="https://source.unsplash.com/1024x576/?nature" alt="Quote Imae">
+            <img class="main-quote-image" src="https://source.unsplash.com/1024x576/?nature" alt="Quote Image">
             <div class="quote-overlay"></div>
             <div class="quote-container">
                 <img src="img/quote-mark.svg" alt="Quote mark">
@@ -109,98 +109,146 @@
                 <a class="input-next"><img src="img/next-btn.svg" alt="Next Button"></a>
             </div>
             <a class="inspiration-link" href="#"><img src="img/inspiration.svg" alt="Need Inspiration"></a>
-        </div>
+        </div> <!-- End of create-quote -->
         <div class="edit-layout">
             <div class="edit-layout-left-container">
-                <div class="edit-layout-left-quote-area">
-                    <div class="edit-layout-quote-image">
-                        <img src="https://source.unsplash.com/1024x576/?nature" alt="Edit Quote Image">
+                    <div class="edit-layout-left-quote-area">
+                        <div class="edit-layout-quote-image">
+                            <img src="https://source.unsplash.com/1024x576/?nature" alt="Edit Quote Image">
+                        </div>
+                        <div class="edit-layout-quote-image-overlay"></div>
+                        <div class="edit-layout-quote-container">
+                            <img src="img/quote-mark.svg" alt="Quote mark">
+                            <div class="edit-layout-quote-wrapper-area">
+                            <p class="edit-layout-quote-main">An amazing quote is said right here. Yes, in the woods and deep in thought.
+                            </p>
+                            <p class="edit-layout-quote-attribution">&mdash; Name goes here</p>
+                        </div>
                     </div>
-                    <div class="edit-layout-quote-image-overlay"></div>
-                    <div class="edit-layout-quote-container">
-                        <img src="img/quote-mark.svg" alt="Quote mark">
-                        <div class="edit-layout-quote-wrapper-area">
-                        <p class="edit-layout-quote-main">An amazing quote is said right here. Yes, in the woods and deep in thought.
+                    <div class="edit-layout-slider">
+                        <div class="edit-layout-slide">
+                            <h3>Abstract</h3>
+                            <div class="theme-line-slide">&nbsp;</div>
+                            <img src="img/abstract.jpg" alt="Abstract">
+                        </div>
+                        <div class="edit-layout-slide">
+                            <h3>Animals</h3>
+                            <div class="theme-line-slide">&nbsp;</div>
+                            <img src="img/animals.jpg" alt="Animals">
+                        </div>   
+                        <div class="edit-layout-slide">
+                            <h3>Architecture</h3>
+                            <div class="theme-line-slide">&nbsp;</div>
+                            <img src="img/architecture.jpg" alt="Architecture">
+                        </div>
+                        <div class="edit-layout-slide-next-btn">
+                            <a href="#"><img src="img/slide-next.svg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="edit-layout-left-input">
+                        <input type="color"  name="inputColorAlt" id="inputColorLT" value="#299592">
+                    </div>
+                </div>
+            </div><!-- End of edit-layout-left-container -->
+            <div class="edit-layout-right-container">
+                <h3>Size</h3>
+                <input type="range" name="sizeRange" id="sizeRange">
+                <h3>Font</h3>
+                <input type="radio" id="segoeUI" name="font" value="Segoe UI" checked="checked">
+                <label for="segoeUI">Segoe UI</label><br>
+                <input type="radio" id="montserrat" name="font" value="Montserrat">
+                <label for="montserrat">Montserrat</label><br>
+                <input type="radio" id="openSans" name="font" value="Open Sans">
+                <label for="openSans">Open Sans</label><br>
+                <input type="radio" id="merriweather" name="font" value="Merriweather">
+                <label for="merriweather">Merriweather</label><br>
+                <input type="radio" id="libreBaskerville" name="font" value="Libre Baskerville">
+                <label for="libreBaskerville">Libre Baskerville</label><br>
+                <h3>Position</h3>
+                <div class="position-wrapper">
+                    <div class="arrow left"></div>
+                    <div class="arrow up"></div>
+                    <div class="arrow down"></div>
+                    <div class="arrow right"></div>
+                </div>
+                <h3>Alignment</h3>
+                <div class="alignment-wrapper">
+                    <div class="align left"></div>
+                    <div class="align center"></div>
+                    <div class="align right"></div>
+                </div>
+                <h3>Effects</h3>
+                <div class="effects-wrapper">
+                    <div class="effects-wrapper-left">
+                        <input type="radio" id="hue" name="efects" value="Hue" checked="checked">
+                        <label for="hue">Hue</label><br>
+                        <input type="radio" id="screen" name="efects" value="screen">
+                        <label for="screen">Screen</label><br>
+                        <input type="radio" id="color" name="efects" value="color">
+                        <label for="color">Color</label><br>
+                    </div>
+                    <div class="effects-wrapper-right">
+                        <input type="radio" id="burn" name="efects" value="burn">
+                        <label for="burn">Burn</label><br>
+                        <input type="radio" id="intensify" name="efects" value="intensify">
+                        <label for="intensify">Intensify</label><br>
+                        <input type="radio" id="soften" name="efects" value="soften">
+                        <label for="soften">Soften</label><br>
+                    </div>
+                </div> <!-- End of effects-wrapper -->
+                <button class="edit-quote">Edit Quote</button>
+                <a href="#" class="next-btn-layout"><img src="img/next-btn.svg" alt="Next Button"></a>
+            </div> <!-- End of edit-layout-right-container -->
+        </div> <!-- End of edit-layout -->
+        <div class="final-quote">
+            <div class="final-quote-overlay-message"></div>
+            <div class="final-quote-message">
+                <img src="img/download.svg" alt="Download Icon">
+                <h3>Thank You!</h3>
+                <p>Please click the 'Okay' button, and then right click on the image and selected "Save Image As," to download your quote to your Desktop. Enjoy :)</p>
+                <button class="download-image">Okay</button>
+            </div> 
+            <img class="main-quote-image" src="https://source.unsplash.com/1024x576/?nature" alt="Quote Imae">
+            <div class="quote-overlay"></div>
+            <div class="quote-container">
+                <img src="img/quote-mark.svg" alt="Quote mark">
+                <div class="quote-wrapper">
+                    <p class="quote-main">An amazing quote is said right here. Yes, in the woods and deep in thought.
                         </p>
-                        <p class="edit-layout-quote-attribution">&mdash; Name goes here</p>
-                    </div>
-                </div>
-                <div class="edit-layout-slider">
-                    <div class="edit-layout-slide">
-                        <h3>Abstract</h3>
-                        <div class="theme-line-slide">&nbsp;</div>
-                        <img src="img/abstract.jpg" alt="Abstract">
-                    </div>
-                    <div class="edit-layout-slide">
-                        <h3>Animals</h3>
-                        <div class="theme-line-slide">&nbsp;</div>
-                        <img src="img/animals.jpg" alt="Animals">
-                    </div>   
-                    <div class="edit-layout-slide">
-                        <h3>Architecture</h3>
-                        <div class="theme-line-slide">&nbsp;</div>
-                        <img src="img/architecture.jpg" alt="Architecture">
-                    </div>
-                    <div class="edit-layout-slide-next-btn">
-                        <a href="#"><img src="img/slide-next.svg" alt=""></a>
-                    </div>
-                </div>
-                <div class="edit-layout-left-input">
-                    <input type="color"  name="inputColorAlt" id="inputColorLT" value="#299592">
+                    <p class="quote-attribution">&mdash; Name goes here</p>
                 </div>
             </div>
-            
-        </div>
-        <div class="edit-layout-right-container">
-            <h3>Size</h3>
-            <input type="range" name="sizeRange" id="sizeRange">
-            <h3>Font</h3>
-            <input type="radio" id="segoeUI" name="font" value="Segoe UI" checked="checked">
-            <label for="segoeUI">Segoe UI</label><br>
-            <input type="radio" id="montserrat" name="font" value="Montserrat">
-            <label for="montserrat">Montserrat</label><br>
-            <input type="radio" id="openSans" name="font" value="Open Sans">
-            <label for="openSans">Open Sans</label><br>
-            <input type="radio" id="merriweather" name="font" value="Merriweather">
-            <label for="merriweather">Merriweather</label><br>
-            <input type="radio" id="libreBaskerville" name="font" value="Libre Baskerville">
-            <label for="libreBaskerville">Libre Baskerville</label><br>
-            <h3>Position</h3>
-            <div class="position-wrapper">
-                <div class="arrow left"></div>
-                <div class="arrow up"></div>
-                <div class="arrow down"></div>
-                <div class="arrow right"></div>
+            <div class="buttons-wrapper">
+                <button class="edit-layout-btn final-btns">Edit Layout</button>
+                <button class="save-quote-btn final-btns">Save Quote</button>
             </div>
-            <h3>Alignment</h3>
-            <div class="alignment-wrapper">
-                <div class="align left"></div>
-                <div class="align center"></div>
-                <div class="align right"></div>
-            </div>
-            <h3>Effects</h3>
-            <div class="effects-wrapper">
-                <div class="effects-wrapper-left">
-                    <input type="radio" id="hue" name="efects" value="Hue" checked="checked">
-                    <label for="hue">Hue</label><br>
-                    <input type="radio" id="screen" name="efects" value="screen">
-                    <label for="screen">Screen</label><br>
-                    <input type="radio" id="color" name="efects" value="color">
-                    <label for="color">Color</label><br>
+        </div> <!-- End of final-quote -->
+        <div class="quote-library">
+            <div class="quote-library-wrapper">
+                <h2>Select your genre</h2>
+                <div class="head-line"></div>
+                <div class="quote-library-icon-wrapper">
+                    <a href="#"><img src="img/spiritual-icon.svg" alt="Spiritual Icon"><p>Spiritual</p></a>
+                    <a href="#"><img src="img/motivation-icon.svg" alt="Motivation Icon"><p>Motivation</p></a>
+                    <a href="#"><img src="img/funny-icon.svg" alt="Funny Icon"><p>Funny</p></a>
+                    <a href="#"><img src="img/famous-icon.svg" alt="Famous Icon"><p>Famous</p></a>
+                    <a href="#"><img src="img/inspiration-icon.svg" alt="Inspiration Icon"><p>Inspiration</p></a>
                 </div>
-                <div class="effects-wrapper-right">
-                    <input type="radio" id="burn" name="efects" value="burn">
-                    <label for="burn">Burn</label><br>
-                    <input type="radio" id="intensify" name="efects" value="intensify">
-                    <label for="intensify">Intensify</label><br>
-                    <input type="radio" id="soften" name="efects" value="soften">
-                    <label for="soften">Soften</label><br>
+                <div class="quote-library-slider">
+                    <a href="#" class="quote-prev"><img src="img/next-btn-gray.svg" alt="Previous Icon"></a>
+                        <div class="quote-library-slider-wrapper">
+                            <img src="img/quote-mark-gray.svg" alt="Quote mark">
+                            <div class="quote-library-slide">
+                                <p class="quote-library-txt">An amazing quote is said right here. Yes, in the woods and deep in thought.</p>
+                                <p class="quote-library-attr">&mdash; Ryan M.</p>
+                            </div>
+                        </div>
+                    <a href="#" class="quote-next"><img src="img/next-btn-gray.svg" alt="Next Icon"></a>
                 </div>
+                <button class="use-this-quote">Use this quote</button>
             </div>
-            <button class="edit-quote">Edit Quote</button>
-            <a href="#" class="next-btn-layout"><img src="img/next-btn.svg" alt="Next Button"></a>
-        </div>
-    </div>
-    <script src="js/app.js"></script>
+        </div><!-- End of quote-library -->
+    </div> <!-- End of quoture-main-conatiner -->
+<script src="js/app.js"></script>
 </body>
 </html>

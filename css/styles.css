@@ -68,7 +68,7 @@ body {
     margin: auto;
     position: relative;
 }
-.intro-display-container, .select-background-theme, .create-quote, .edit-layout {
+.intro-display-container, .select-background-theme, .create-quote, .edit-layout, .final-quote, .quote-library {
     display: block;
     width: 1024px;
     height: 576px;
@@ -289,7 +289,7 @@ body {
     opacity: 0.65;
 }
 /*CREATE QUOTE*/
-.create-quote {
+.create-quote, .final-quote {
     display: block;
     position: relative;
 }
@@ -466,6 +466,7 @@ select:focus {
     justify-content: center;
     flex-direction: row;
     width: 435px;
+    z-index: 400;
 }
 .edit-layout-quote-container img {
     margin-right: 15px;
@@ -678,7 +679,7 @@ input[type="range"]::-ms-fill-upper {
 .effects-wrapper-right {
     margin-left: 10px;
 }
-.edit-layout-right-container .edit-quote {
+.edit-layout-right-container .edit-quote, .buttons-wrapper .final-btns {
     margin-top: 20px;
     background: none;
     border: 2px solid #ffffff;
@@ -689,7 +690,7 @@ input[type="range"]::-ms-fill-upper {
     text-align: center;
     transition: 0.7s;
 }
-.edit-layout-right-container .edit-quote:hover {
+.edit-layout-right-container .edit-quote:hover, .buttons-wrapper .final-btns:hover {
     background: #ffffff;
     color: #1D1919;
     font-weight: 500;
@@ -703,4 +704,208 @@ input[type="range"]::-ms-fill-upper {
 }
 .edit-layout-right-container .next-btn-layout:hover {
     opacity: 0.65;
+}
+.final-quote .quote-container {
+    top: 50%;
+}
+.buttons-wrapper {
+    position: absolute;
+    bottom: 5%;
+    display: flex;
+    width: 45%;
+    justify-content: space-between;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 600;
+}
+.buttons-wrapper .final-btns {
+    -webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.60); 
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.60);
+    background: rgba(0, 0, 0, 0.55);
+    width: 125px;
+    height: 45px;
+}
+.final-quote-message {
+    position: absolute;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    width: 400px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    padding: 30px;
+    -webkit-box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.60); 
+    box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.60);
+}
+.final-quote-message img {
+    width: 50px;
+}
+.final-quote-message h3 {
+    color: #707070;
+    margin-top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+}
+.final-quote-message p {
+    margin: 15px 0;
+    color: #707070;
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.25;
+}
+.final-quote-message .download-image {
+    color: #707070;
+    border: 2px solid #707070;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    width: 175px;
+    height: 50px;
+    padding: 10px 15px;
+    text-align: center;
+}
+.final-quote-message .download-image:hover {
+    background: #707070;
+    color: #ffffff;
+    font-weight: 800;
+}
+.final-quote-overlay-message {
+    display: none;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.80);
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+}
+.quote-library {
+    background: #e3e3e3;
+    box-sizing: border-box;
+    padding: 40px;
+}
+.quote-library-wrapper {
+    background: #ffffff;
+    border: 4px solid #707070;
+    box-sizing: border-box;
+    padding: 50px;
+    height: 100%;
+    position: relative;
+}
+.quote-library-wrapper h2 {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    color: #707070;
+    text-align: center;
+    font-size: 45px;
+    width: 100%;
+    font-weight: 400;
+}
+.quote-library-wrapper .head-line {
+    background: #707070;
+    height: 3px;
+    width: 250px;
+    margin: 15px auto 30px;
+}
+.quote-library-icon-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+}
+.quote-library-icon-wrapper a {
+    text-decoration: none;
+    color: #707070;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    text-align: center;
+    margin-top: 10px;
+    transition: 0.7s;
+}
+.quote-library-icon-wrapper a img {
+    transition: 0.7s;
+}
+.quote-library-icon-wrapper a img:hover {
+    opacity: 0.65;
+    transform: scale(1.25);
+}
+.quote-library-icon-wrapper p {
+    margin-top: 10px;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    color: #707070;
+    font-weight: 500;
+}
+.quote-library-slider {
+    display: flex;
+    margin-top: 28px;
+    justify-content: space-between;
+    height: 105px;
+    align-items: center;
+}
+.quote-prev {
+    transform: rotate(180deg);
+}
+.quote-library-slider-wrapper {
+    position: relative;
+    width: 640px;
+    margin: auto;
+}
+.quote-library-slider-wrapper img {
+    position: absolute;
+    left: 0;
+    top: -40px;
+}
+.quote-library-slide {
+    position: absolute;
+    left: 66px;
+    top: -22px;
+    width: 565px;
+}
+.quote-library-slide .quote-library-txt {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #707070;
+    line-height: 1.15;
+}
+.quote-library-slide .quote-library-attr {
+    text-transform: uppercase;
+    margin-top: 8px;
+    font-weight: 700;
+    color: #707070;
+    font-size: 13px;
+}
+.quote-next, .quote-prev {
+    transition: 0.7s;
+}
+.quote-next:hover, .quote-prev:hover {
+    filter:  brightness(0.5) invert(1);
+}
+.use-this-quote {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    position: absolute;
+    z-index: 600;
+    background: none;
+    color: #707070;
+    width: 215px;
+    height: 45px;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+    border: 2px solid #707070;
+    font-size: 16px;
+    text-transform: uppercase;
+    bottom: 15px;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    transition: 0.5s;
+}
+.use-this-quote:hover {
+    background: #707070;
+    color: #ffffff;
+    font-weight: 700;
 }
