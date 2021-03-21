@@ -139,7 +139,7 @@ body {
 
 /* SELECT BACKGROUND CONTAINER */
 .select-background-theme {
-    display: flex;
+    display: none;
 }
 .left-area {
     width: 75%;
@@ -176,6 +176,10 @@ body {
 }
 .left-area-wrapper .theme-image-wrapper img:hover {
     opacity: 0.65;
+}
+.left-area-wrapper :nth-child(5).theme-image-wrapper img {
+    border: 3px solid #fff;
+
 }
 .left-area-wrapper h3 {
     position: absolute;
@@ -223,7 +227,6 @@ body {
 .right-area .color-picker {
     background: url('../img/color-select-img.jpg') center center no-repeat;
     background-size: cover;
-    background-color: steelblue;
     width: 185px;
     height: 80px;
     border-radius: 10px;
@@ -241,6 +244,9 @@ body {
     border-radius: 100%;
     background: darkgray;
     margin-top: 15px;
+}
+.color-circles:nth-child(2) {
+    border: 3px solid #ffffff;
 }
 .darkgray { background-color: #332E2E; }
 .darkblue { background-color: #0B438E; }
@@ -266,7 +272,7 @@ body {
     color: #B1B1B1;
     font-weight: bold;
 }
-.right-area .inputColor {
+.right-area .input-color {
     border-radius: 5px;
     border: none;
     display: block;
@@ -290,7 +296,7 @@ body {
 }
 /*CREATE QUOTE*/
 .create-quote, .final-quote {
-    display: block;
+    display: none;
     position: relative;
 }
 .main-quote-image {
@@ -353,6 +359,7 @@ body {
 }
 .input-quote-error {
     display: none;
+    justify-content: center;
     position: absolute;
     margin-left: 15px;
     padding: 8px 13px 10px;
@@ -395,6 +402,9 @@ select:focus {
     color: #ffffff;
     font-size: 1.05rem;
 }
+.input-quote-wrapper input:last-of-type {
+    display: none;
+}
 .input-quote-wrapper a {
     background: #707070;
     height: 67px;
@@ -416,6 +426,9 @@ select:focus {
 .input-quote-wrapper a:hover, .input-quote-wrapper a img:hover {
     opacity: 0.75;
 }
+.input-quote-wrapper a:last-of-type {
+    display: none;
+}
 .inspiration-link {
     position: absolute;
     bottom: 50px;
@@ -431,7 +444,7 @@ select:focus {
 .edit-layout {
     background: #1D1919;
     position: relative;
-    display: flex;
+    display: none;
     flex-direction: row;
 }
 .edit-layout-left-container {
@@ -785,6 +798,7 @@ input[type="range"]::-ms-fill-upper {
     left: 0;
 }
 .quote-library {
+    display: none;
     background: #e3e3e3;
     box-sizing: border-box;
     padding: 40px;
