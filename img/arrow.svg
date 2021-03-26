@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" width="24" height="24" viewBox="0 0 24 24"><path d="M11.574 3.712c.195-.323.662-.323.857 0l9.37 15.545c.2.333-.039.757-.429.757l-18.668-.006c-.385 0-.629-.422-.428-.758l9.298-15.538zm.429-2.483c-.76 0-1.521.37-1.966 1.111l-9.707 16.18c-.915 1.523.182 3.472 1.965 3.472h19.416c1.783 0 2.879-1.949 1.965-3.472l-9.707-16.18c-.446-.741-1.205-1.111-1.966-1.111z"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+</style>
+<path class="st0" d="M11.6,4c0.2-0.4,0.7-0.4,0.9,0l9.4,17c0.2,0.4,0,0.8-0.4,0.8l-18.7,0c-0.4,0-0.6-0.5-0.4-0.8
+	C2.3,21,11.6,4,11.6,4z M12,1.2c-0.8,0-1.5,0.4-2,1.2L0.3,20.2c-0.9,1.7,0.2,3.8,2,3.8h19.4c1.8,0,2.9-2.1,2-3.8L14,2.4
+	C13.5,1.6,12.8,1.2,12,1.2z"/>
+</svg>

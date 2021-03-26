@@ -90,7 +90,15 @@
                 <a href="#" class="next-page"><img src="/img/next.svg" alt="Next Icon"></a>
             </div>
         </div> <!-- End of select-background-theme -->
-        <div class="create-quote">
+        <div class="create-quote final-quote">
+            <div class="final-quote-overlay-message"></div>
+            <div class="final-quote-message">
+                <img src="img/download.svg" alt="Download Icon">
+                <h3>Thank You!</h3>
+                <p>Please click the 'Okay' button, and then right click on the image and selected "Save Image As," to download your quote to your Desktop. Enjoy :)</p>
+                <button class="download-image">Okay</button>
+            </div> 
+            <div class="preview-quote"><p class="preview-quote-para">Preview</p></div>
             <img class="main-quote-image" src="https://source.unsplash.com/1024x576/?nature" alt="Quote Image">
             <div class="quote-overlay"></div>
             <div class="quote-container">
@@ -111,6 +119,10 @@
                 <a class="input-next-two"><img src="img/next-btn.svg" alt="Next Button"></a>
             </div>
             <a class="inspiration-link" href="#"><img src="img/inspiration.svg" alt="Need Inspiration"></a>
+            <div class="buttons-wrapper">
+                <button class="edit-layout-btn final-btns">Edit Layout</button>
+                <button class="save-quote-btn final-btns">Save Quote</button>
+            </div>
         </div> <!-- End of create-quote -->
         <div class="edit-layout">
             <div class="edit-layout-left-container">
@@ -127,23 +139,53 @@
                         </div>
                     </div>
                     <div class="edit-layout-slider">
-                        <div class="edit-layout-slide">
+                        <div class="edit-layout-slide slide active">
                             <h3>Abstract</h3>
                             <div class="theme-line-slide">&nbsp;</div>
-                            <img src="img/abstract.jpg" alt="Abstract">
+                            <img class="edit-theme-image" src="img/abstract.jpg" alt="Abstract">
                         </div>
-                        <div class="edit-layout-slide">
+                        <div class="edit-layout-slide slide active">
                             <h3>Animals</h3>
                             <div class="theme-line-slide">&nbsp;</div>
-                            <img src="img/animals.jpg" alt="Animals">
+                            <img class="edit-theme-image" src="img/animals.jpg" alt="Animals">
                         </div>   
-                        <div class="edit-layout-slide">
+                        <div class="edit-layout-slide slide active">
                             <h3>Architecture</h3>
                             <div class="theme-line-slide">&nbsp;</div>
-                            <img src="img/architecture.jpg" alt="Architecture">
+                            <img class="edit-theme-image" src="img/architecture.jpg" alt="Architecture">
+                        </div>
+                        <div class="edit-layout-slide slide">
+                            <h3>Horizon</h3>
+                            <div class="theme-line-slide">&nbsp;</div>
+                            <img class="edit-theme-image" src="img/horizon.jpg" alt="Horizon">
+                        </div>
+                        <div class="edit-layout-slide slide">
+                            <h3>Nature</h3>
+                            <div class="theme-line-slide">&nbsp;</div>
+                            <img class="edit-theme-image" src="img/nature.jpg" alt="Nature">
+                        </div>
+                        <div class="edit-layout-slide slide">
+                            <h3>People</h3>
+                            <div class="theme-line-slide">&nbsp;</div>
+                            <img class="edit-theme-image" src="img/people.jpg" alt="People">
+                        </div>
+                        <div class="edit-layout-slide slide">
+                            <h3>Rocks</h3>
+                            <div class="theme-line-slide">&nbsp;</div>
+                            <img class="edit-theme-image" src="img/rocks.jpg" alt="Rocks">
+                        </div>
+                        <div class="edit-layout-slide slide">
+                            <h3>Technology</h3>
+                            <div class="theme-line-slide">&nbsp;</div>
+                            <img class="edit-theme-image" src="img/technology.jpg" alt="Technology">
+                        </div>
+                        <div class="edit-layout-slide slide">
+                            <h3>Water</h3>
+                            <div class="theme-line-slide">&nbsp;</div>
+                            <img class="edit-theme-image" src="img/water.jpg" alt="Water">
                         </div>
                         <div class="edit-layout-slide-next-btn">
-                            <a href="#"><img src="img/slide-next.svg" alt=""></a>
+                            <a href="#"><img src="img/slide-next.svg" alt="Slide Next"></a>
                         </div>
                     </div>
                     <div class="edit-layout-left-input">
@@ -155,15 +197,15 @@
                 <h3>Size</h3>
                 <input type="range" name="sizeRange" id="sizeRange">
                 <h3>Font</h3>
-                <input type="radio" id="segoeUI" name="font" value="Segoe UI" checked="checked">
+                <input type="radio" id="segoeUI" name="font" class="font-selection segoeUIFont" value="Segoe UI" checked="checked">
                 <label for="segoeUI">Segoe UI</label><br>
-                <input type="radio" id="montserrat" name="font" value="Montserrat">
+                <input type="radio" id="montserrat" name="font" class="font-selection montserratFont" value="Montserrat">
                 <label for="montserrat">Montserrat</label><br>
-                <input type="radio" id="openSans" name="font" value="Open Sans">
+                <input type="radio" id="openSans" name="font" class="font-selection openSansFont" value="Open Sans">
                 <label for="openSans">Open Sans</label><br>
-                <input type="radio" id="merriweather" name="font" value="Merriweather">
+                <input type="radio" id="merriweather" name="font" class="font-selection merriweatherFont" value="Merriweather">
                 <label for="merriweather">Merriweather</label><br>
-                <input type="radio" id="libreBaskerville" name="font" value="Libre Baskerville">
+                <input type="radio" id="libreBaskerville" name="font" class="font-selection libreBaskervilleFont" value="Libre Baskerville">
                 <label for="libreBaskerville">Libre Baskerville</label><br>
                 <h3>Position</h3>
                 <div class="position-wrapper">
@@ -181,19 +223,19 @@
                 <h3>Effects</h3>
                 <div class="effects-wrapper">
                     <div class="effects-wrapper-left">
-                        <input type="radio" id="hue" name="efects" value="Hue" checked="checked">
-                        <label for="hue">Hue</label><br>
-                        <input type="radio" id="screen" name="efects" value="screen">
-                        <label for="screen">Screen</label><br>
-                        <input type="radio" id="color" name="efects" value="color">
+                        <input type="radio" id="color" class="radio-effects radioColor" name="effects" value="color" checked="checked">
                         <label for="color">Color</label><br>
+                        <input type="radio" id="hue" class="radio-effects radioHue" name="effects" value="Hue">
+                        <label for="hue">Hue</label><br>
+                        <input type="radio" id="screen" class="radio-effects radioScreen" name="effects" value="screen">
+                        <label for="screen">Screen</label><br>
                     </div>
                     <div class="effects-wrapper-right">
-                        <input type="radio" id="burn" name="efects" value="burn">
+                        <input type="radio" id="burn" class="radio-effects radioBurn" name="effects" value="burn">
                         <label for="burn">Burn</label><br>
-                        <input type="radio" id="intensify" name="efects" value="intensify">
+                        <input type="radio" id="intensify" class="radio-effects radioIntensify" name="effects" value="intensify">
                         <label for="intensify">Intensify</label><br>
-                        <input type="radio" id="soften" name="efects" value="soften">
+                        <input type="radio" id="soften" class="radio-effects radioSoft" name="effects" value="soften">
                         <label for="soften">Soften</label><br>
                     </div>
                 </div> <!-- End of effects-wrapper -->
@@ -201,29 +243,6 @@
                 <a href="#" class="next-btn-layout"><img src="img/next-btn.svg" alt="Next Button"></a>
             </div> <!-- End of edit-layout-right-container -->
         </div> <!-- End of edit-layout -->
-        <div class="final-quote">
-            <div class="final-quote-overlay-message"></div>
-            <div class="final-quote-message">
-                <img src="img/download.svg" alt="Download Icon">
-                <h3>Thank You!</h3>
-                <p>Please click the 'Okay' button, and then right click on the image and selected "Save Image As," to download your quote to your Desktop. Enjoy :)</p>
-                <button class="download-image">Okay</button>
-            </div> 
-            <img class="main-quote-image" src="https://source.unsplash.com/1024x576/?nature" alt="Quote Imae">
-            <div class="quote-overlay"></div>
-            <div class="quote-container">
-                <img src="img/quote-mark.svg" alt="Quote mark">
-                <div class="quote-wrapper">
-                    <p class="quote-main">An amazing quote is said right here. Yes, in the woods and deep in thought.
-                        </p>
-                    <p class="quote-attribution">&mdash; Name goes here</p>
-                </div>
-            </div>
-            <div class="buttons-wrapper">
-                <button class="edit-layout-btn final-btns">Edit Layout</button>
-                <button class="save-quote-btn final-btns">Save Quote</button>
-            </div>
-        </div> <!-- End of final-quote -->
         <div class="quote-library">
             <div class="quote-library-wrapper">
                 <h2>Select your genre</h2>
