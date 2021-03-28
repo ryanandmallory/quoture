@@ -1,20 +1,16 @@
 // Item Controller
 const ItemCtrl = (function(){
     // Item Constructor
-    const QuoteContainer = function (id, name, calories) {
-        this.id = id;
+    const Quote = function(quote, name, category){
+        this.quote = quote;
         this.name = name;
-        this.calories = calories;
+        this.category = category;
     }
-    // Data Structure
-    const quoteContainer = {
-        quote: [],
-        attribution: ''
-    }
+    
     // Public methods
     return {
         getItems: function(){
-            return quoteContainer.quote;
+            return Quote.quote;
         },
     }
 })();
@@ -54,7 +50,10 @@ const UICtrl = (function(){
         btnNextLayout: '.next-btn-layout',
         btnEditLayout: '.edit-layout-btn',
         btnSaveQuote: '.save-quote-btn',
-        btnDownloadImage: '.download-image'
+        btnDownloadImage: '.download-image',
+        btnNeedInspiration: '.inspiration-link',
+        btnQuoteSlider: '.btn-quote-slider',
+        quoteCategories: '.quote-categories'
     }
     // Public methods
     return {
@@ -379,6 +378,134 @@ const UICtrl = (function(){
         exitQuoteModal: function (){
             document.querySelector('.final-quote-overlay-message').style.display = 'none';
             document.querySelector('.final-quote-message').style.display = 'none';
+        },
+        quoteLibrary: function (){
+            document.querySelector('.quote-library').style.display = 'block';
+            document.querySelector('.create-quote').style.display = 'none';
+        },
+        displayCategoryQuote: function (categoryName) {
+            fetch('../js/quotes.json').then(response => {
+                console.log(response)
+                return response.json();
+            }).then(data => {
+                const activeImgCategoryDisplay = function (selectorElem) {
+                    const allImgQuoteIcons = document.querySelectorAll('.quote-categories img');
+                    for (let i = 0; i < allImgQuoteIcons.length; i++){
+                        allImgQuoteIcons[i].style.background = '#ffffff';
+                        allImgQuoteIcons[i].style.borderRadius = 0;
+                        allImgQuoteIcons[i].style.filter = 'none';
+                    }
+                    const imgActive = document.querySelector(selectorElem);
+                    imgActive.style.boxSizing = 'border-box';
+                    imgActive.style.background = '#e3e3e3';
+                    imgActive.style.borderRadius = '100%';
+                    imgActive.style.filter = 'drop-shadow(0px 0px 6px rgba(56,24,15,0.25))';
+                }
+                const runQuoteDisplay = function (categoryElem) {
+                    const removeOldCategories = function () {
+                        const quoteLibraryText = document.querySelectorAll('.quote-library-txt');
+                        const quoteLibraryAttr = document.querySelectorAll('.quote-library-attr');
+                        for (var i = 0; i < quoteLibraryText.length; i++){
+                            for (var j = 0; j < quoteLibraryAttr.length; j++){
+                                quoteLibraryText[i].remove();
+                                quoteLibraryAttr[j].remove();
+                            }
+                        }
+                    }
+                    removeOldCategories();
+                    let quoteElement = data['Quotes'].filter( text => {
+                        if (text.category === categoryElem) {
+                            return `${text.quote}`;
+                        }
+                        if (text.category === categoryElem) {
+                            return `${text.quote}`;
+                        }
+                    });
+                    for (var j = 0; j < quoteElement.length; j++) {
+                        const jsonStringQuote = JSON.stringify(quoteElement[j].quote);
+                        const jsonStringAuthor = JSON.stringify(quoteElement[j].author);
+                        const outputQuote = `<p class="quote-library-txt"> ${JSON.parse(jsonStringQuote)} </p>`;
+                        const outputAuthor = `<p class="quote-library-attr"> ${JSON.parse(jsonStringAuthor)} </p>`;
+                        document.querySelector('.quote-library-slide').insertAdjacentHTML('afterbegin', outputAuthor);
+                        document.querySelector('.quote-library-slide').insertAdjacentHTML('afterbegin', outputQuote);
+                    }
+                }
+                if (categoryName === 'Spiritual'){
+                    runQuoteDisplay('spiritual');
+                    activeImgCategoryDisplay('.quote-categories:nth-child(1) img');
+                }
+                if (categoryName === 'Motivation'){
+                    runQuoteDisplay('motivation');
+                    activeImgCategoryDisplay('.quote-categories:nth-child(2) img');
+                }
+                if (categoryName === 'Funny'){
+                    runQuoteDisplay('funny');
+                    activeImgCategoryDisplay('.quote-categories:nth-child(3) img');
+                }
+                if (categoryName === 'Famous'){
+                    runQuoteDisplay('famous');
+                    activeImgCategoryDisplay('.quote-categories:nth-child(4) img');
+                }
+                if (categoryName === 'Inspiration'){
+                    runQuoteDisplay('inspiration');
+                    activeImgCategoryDisplay('.quote-categories:nth-child(5) img');
+                }                
+                const quoteLibraryText = document.querySelectorAll('.quote-library-txt');
+                const quoteLibraryAttr = document.querySelectorAll('.quote-library-attr');
+                for (var i = 0; i < quoteLibraryText.length; i++){
+                    for (var j = 0; j < quoteLibraryAttr.length; j++){
+                        quoteLibraryText[0].classList.add('active');
+                        quoteLibraryAttr[0].classList.add('active');
+                    }
+                }
+            }).catch ( error => {
+                    console.log('Something went wrong, please check your code.');
+                    console.error(error);
+            });
+        },
+        quoteCategoriesOnload: function (){
+            fetch('../js/quotes.json').then(response => {
+                return response.json();
+            }).then(data => {
+                const runQuoteDisplay = function (categoryElem) {
+                    const imgActive = document.querySelector('.quote-categories:nth-child(3) img');
+                    imgActive.style.boxSizing = 'border-box';
+                    imgActive.style.background = '#e3e3e3';
+                    imgActive.style.borderRadius = '100%';
+                    imgActive.style.filter = 'drop-shadow(0px 0px 6px rgba(56,24,15,0.25))';
+                    let spiritual = data['Quotes'].filter( text => {
+                        if (text.category === categoryElem) {
+                            return `${text.quote}`;
+                        }
+                        if (text.category === categoryElem) {
+                            return `${text.quote}`;
+                        }
+                    });
+                    for (var j = 0; j < spiritual.length; j++) {
+                        const jsonStringQuote = JSON.stringify(spiritual[j].quote);
+                        const jsonStringAuthor = JSON.stringify(spiritual[j].author);
+                        const outputQuote = `<p class="quote-library-txt"> ${JSON.parse(jsonStringQuote)} </p>`;
+                        const outputAuthor = `<p class="quote-library-attr"> ${JSON.parse(jsonStringAuthor)} </p>`;
+                        document.querySelector('.quote-library-slide').insertAdjacentHTML('afterbegin', outputAuthor);
+                        document.querySelector('.quote-library-slide').insertAdjacentHTML('afterbegin', outputQuote);
+                    }
+                }
+                
+                runQuoteDisplay('funny');
+                            
+                const quoteLibraryText = document.querySelectorAll('.quote-library-txt');
+                const quoteLibraryAttr = document.querySelectorAll('.quote-library-attr');
+                for (var i = 0; i < quoteLibraryText.length; i++){
+                    for (var j = 0; j < quoteLibraryAttr.length; j++){
+                        quoteLibraryText[0].classList.add('active');
+                        quoteLibraryAttr[0].classList.add('active');
+                    }
+                }
+            }).catch ( error => {
+                    console.log('Something went wrong, please check your code.');
+                    console.error(error);
+            });
+            
         }
     }
 })();
@@ -460,6 +587,14 @@ const App = (function(ItemCtrl, UICtrl){
             UICtrl.allowPreviewQuote();
         };
     });
+    // Call icon when clicked to display quote
+    document.addEventListener('click', function (event) {
+        if (event.target.closest(UISelectors.quoteCategories)) {
+            UICtrl.displayCategoryQuote(event.target.parentNode.firstChild.alt);
+        };
+    });
+    // Call icon and quote when loaded
+    UICtrl.quoteCategoriesOnload();
     // Load Event Listeners
     const loadEventListeners = function () {
         document.querySelector(UISelectors.btnBegin).addEventListener('click', UICtrl.revealBackgroundTheme);
@@ -476,6 +611,7 @@ const App = (function(ItemCtrl, UICtrl){
         document.querySelector(UISelectors.btnEditLayout).addEventListener('click', UICtrl.revealEditLayout);
         document.querySelector(UISelectors.btnSaveQuote).addEventListener('click', UICtrl.saveQuoteModal);
         document.querySelector(UISelectors.btnDownloadImage).addEventListener('click', UICtrl.exitQuoteModal);
+        document.querySelector(UISelectors.btnNeedInspiration).addEventListener('click', UICtrl.quoteLibrary);
     }
     // Public methods
     return {

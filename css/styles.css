@@ -888,6 +888,8 @@ input[type="range"]::-ms-fill-upper {
 }
 .quote-library-icon-wrapper a img {
     transition: 0.7s;
+    width: 65px;
+    height: 65px;
 }
 .quote-library-icon-wrapper a img:hover {
     opacity: 0.65;
@@ -916,8 +918,9 @@ input[type="range"]::-ms-fill-upper {
 }
 .quote-library-slider-wrapper img {
     position: absolute;
-    left: 0;
-    top: -40px;
+    left: 20px;
+    top: -32px;
+    width: 32px;
 }
 .quote-library-slide {
     position: absolute;
@@ -931,6 +934,7 @@ input[type="range"]::-ms-fill-upper {
     font-weight: 500;
     color: #707070;
     line-height: 1.15;
+    display: none;
 }
 .quote-library-slide .quote-library-attr {
     text-transform: uppercase;
@@ -938,6 +942,13 @@ input[type="range"]::-ms-fill-upper {
     font-weight: 700;
     color: #707070;
     font-size: 13px;
+    display: none;
+}
+.quote-library-slide .active {
+    display: block;
+}
+.quote-library-slide .active {
+    display: block;
 }
 .quote-next, .quote-prev {
     transition: 0.7s;
