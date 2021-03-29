@@ -53,7 +53,8 @@ const UICtrl = (function(){
         btnDownloadImage: '.download-image',
         btnNeedInspiration: '.inspiration-link',
         btnQuoteSlider: '.btn-quote-slider',
-        quoteCategories: '.quote-categories'
+        quoteCategories: '.quote-categories',
+        useThisQuote: '.use-this-quote'
     }
     // Public methods
     return {
@@ -209,6 +210,13 @@ const UICtrl = (function(){
             document.querySelector('.edit-layout').style.display = 'flex';
             tempImage = document.querySelector('.main-quote-image').src;
             document.querySelector('.edit-layout-quote-image-img').src = tempImage;
+            document.querySelector('.buttons-wrapper').style.display = 'none';
+            document.querySelector('.preview-quote').style.display = 'block';
+            document.querySelector('.inspiration-link').style.display = 'block';
+            document.querySelector('#inputAttribution').style.display = 'none';
+            document.querySelector('#inputTxt').style.display = 'block';
+            document.querySelector('.input-next').style.display = 'block';
+            document.querySelector('.input-next-two').style.display = 'none';
         },
         advanceSlide: function () {
             const activeSlides = document.querySelectorAll('.active');
@@ -272,6 +280,7 @@ const UICtrl = (function(){
             document.querySelector('#inputAttribution').style.display = 'none';
             document.querySelector('#inputTxt').style.display = 'block';
             document.querySelector('.input-next').style.display = 'block';
+            document.querySelector('.input-quote-wrapper').style.display = 'flex';
             document.querySelector('.input-next-two').style.display = 'none';
             tempImage = document.querySelector('.edit-layout-quote-image-img').src;
             document.querySelector('.main-quote-image').src = tempImage;
@@ -454,8 +463,8 @@ const UICtrl = (function(){
                 const quoteLibraryAttr = document.querySelectorAll('.quote-library-attr');
                 for (var i = 0; i < quoteLibraryText.length; i++){
                     for (var j = 0; j < quoteLibraryAttr.length; j++){
-                        quoteLibraryText[0].classList.add('active');
-                        quoteLibraryAttr[0].classList.add('active');
+                        quoteLibraryText[0].classList.add('active-quote-libray-txt');
+                        quoteLibraryAttr[0].classList.add('active-quote-libray-attr');
                     }
                 }
             }).catch ( error => {
@@ -497,15 +506,79 @@ const UICtrl = (function(){
                 const quoteLibraryAttr = document.querySelectorAll('.quote-library-attr');
                 for (var i = 0; i < quoteLibraryText.length; i++){
                     for (var j = 0; j < quoteLibraryAttr.length; j++){
-                        quoteLibraryText[0].classList.add('active');
-                        quoteLibraryAttr[0].classList.add('active');
+                        quoteLibraryText[0].classList.add('active-quote-libray-txt');
+                        quoteLibraryAttr[0].classList.add('active-quote-libray-attr');
                     }
                 }
             }).catch ( error => {
                     console.log('Something went wrong, please check your code.');
                     console.error(error);
-            });
-            
+            }); 
+        },
+        displayQuoteSlider: function (event){
+            const quoteSlide = document.querySelectorAll('.quote-library-txt');
+            const quoteSlideAttr = document.querySelectorAll('.quote-library-attr');
+            const quoteSlideActive = document.querySelectorAll('.active-quote-libray-txt');
+            const quoteSlideAttrActive = document.querySelectorAll('.active-quote-libray-attr');
+            if (event.target.parentElement.classList.contains('quote-next')){
+                for (var i = 0; i < quoteSlide.length; i++){
+                    for (var x = 0; x < quoteSlideActive.length; x++ ){
+                        if (quoteSlide[quoteSlide.length - 1] !== quoteSlideActive[0]){
+                            quoteSlideActive[0].nextElementSibling.nextElementSibling.classList.add('active-quote-libray-txt');
+                            quoteSlideActive[0].classList.remove('active-quote-libray-txt');
+                        } else {
+                            quoteSlideActive[0].classList.remove('active-quote-libray-txt');
+                            quoteSlide[quoteSlide.length - 1].classList.add('active-quote-libray-txt')
+                        }
+                    }
+                }
+                for (var i = 0; i < quoteSlideAttr.length; i++){
+                    for (var x = 0; x < quoteSlideAttrActive.length; x++ ){
+                        if (quoteSlideAttr[quoteSlideAttr.length - 1] !== quoteSlideAttrActive[0]){
+                            quoteSlideAttrActive[0].nextElementSibling.nextElementSibling.classList.add('active-quote-libray-attr');
+                            quoteSlideAttrActive[0].classList.remove('active-quote-libray-attr');
+                        } else {
+                            quoteSlideAttrActive[0].classList.remove('active-quote-libray-attr');
+                            quoteSlideAttr[quoteSlide.length - 1].classList.add('active-quote-libray-attr')
+                        }
+                    }
+                }
+            } else {
+                for (var i = 0; i < quoteSlide.length; i++){
+                    for (var x = 0; x < quoteSlideActive.length; x++ ){
+                        if (quoteSlide[0] !== quoteSlideActive[0]){
+                            quoteSlideActive[0].previousElementSibling.previousElementSibling.classList.add('active-quote-libray-txt');
+                            quoteSlideActive[0].classList.remove('active-quote-libray-txt');
+                        } else {
+                            quoteSlideActive[0].classList.remove('active-quote-libray-txt');
+                            quoteSlide[0].classList.add('active-quote-libray-txt')
+                        }
+                    }
+                }
+                for (var i = 0; i < quoteSlideAttr.length; i++){
+                    for (var x = 0; x < quoteSlideAttrActive.length; x++ ){
+                        if (quoteSlideAttr[0] !== quoteSlideAttrActive[0]){
+                            quoteSlideAttrActive[0].previousElementSibling.previousElementSibling.classList.add('active-quote-libray-attr');
+                            quoteSlideAttrActive[0].classList.remove('active-quote-libray-attr');
+                        } else {
+                            quoteSlideAttrActive[0].classList.remove('active-quote-libray-attr');
+                            quoteSlideAttr[0].classList.add('active-quote-libray-attr')
+                        }
+                    }
+                }
+            }
+        },
+        placeLibraryQuote: function (){
+            const libraryQuote = document.querySelector('.active-quote-libray-txt');
+            const libraryAttr = document.querySelector('.active-quote-libray-attr');
+            document.querySelector('.quote-library').style.display = 'none';
+            document.querySelector('.create-quote').style.display = 'flex';
+            document.querySelector('#inputTxt').value = libraryQuote.textContent;
+            document.querySelector('#inputAttribution').value = libraryAttr.textContent;
+            document.querySelector('.quote-main').textContent = libraryQuote.textContent;
+            document.querySelector('.quote-attribution').textContent = libraryAttr.textContent;
+            document.querySelector('.edit-layout-quote-main').textContent = libraryQuote.textContent;
+            document.querySelector('.edit-layout-quote-attribution').textContent = libraryAttr.textContent;
         }
     }
 })();
@@ -583,7 +656,6 @@ const App = (function(ItemCtrl, UICtrl){
     });
     document.addEventListener('click', function (event) {
         if (event.target.closest(UISelectors.btnPreviewQuote)) {
-            console.log("Click button call allowPreviewQuote method");
             UICtrl.allowPreviewQuote();
         };
     });
@@ -593,8 +665,14 @@ const App = (function(ItemCtrl, UICtrl){
             UICtrl.displayCategoryQuote(event.target.parentNode.firstChild.alt);
         };
     });
-    // Call icon and quote when loaded
+    // Call icon and quote when page is loaded
     UICtrl.quoteCategoriesOnload();
+    // Call event on quote slider when clicked on prev or next button
+    document.addEventListener('click', function (event) {
+        if (event.target.closest(UISelectors.btnQuoteSlider)) {
+            UICtrl.displayQuoteSlider(event);
+        };
+    });
     // Load Event Listeners
     const loadEventListeners = function () {
         document.querySelector(UISelectors.btnBegin).addEventListener('click', UICtrl.revealBackgroundTheme);
@@ -612,6 +690,7 @@ const App = (function(ItemCtrl, UICtrl){
         document.querySelector(UISelectors.btnSaveQuote).addEventListener('click', UICtrl.saveQuoteModal);
         document.querySelector(UISelectors.btnDownloadImage).addEventListener('click', UICtrl.exitQuoteModal);
         document.querySelector(UISelectors.btnNeedInspiration).addEventListener('click', UICtrl.quoteLibrary);
+        document.querySelector(UISelectors.useThisQuote).addEventListener('click', UICtrl.placeLibraryQuote);
     }
     // Public methods
     return {

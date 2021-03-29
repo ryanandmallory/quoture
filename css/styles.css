@@ -518,7 +518,7 @@ select:focus {
     align-items: flex-start;
     justify-content: center;
     flex-direction: row;
-    width: 475px;
+    width: 470px;
     z-index: 400;
 }
 .edit-layout-quote-container img {
@@ -944,10 +944,10 @@ input[type="range"]::-ms-fill-upper {
     font-size: 13px;
     display: none;
 }
-.quote-library-slide .active {
+.quote-library-slide .active-quote-libray-txt {
     display: block;
 }
-.quote-library-slide .active {
+.quote-library-slide .active-quote-libray-attr {
     display: block;
 }
 .quote-next, .quote-prev {
