@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/html2canvas.min.js"></script>
     <title>Quoture</title>
 </head>
 <body>
+    <div class="final-quote-display"><button class="final-quote-download-btn">Start Over</button></div>
     <div class="quoture-main-conatiner">
         <div class="intro-display-container">
             <div class="intro-display-wrapper">
@@ -99,14 +101,16 @@
                 <button class="download-image">Okay</button>
             </div> 
             <div class="preview-quote"><p class="preview-quote-para">Preview</p></div>
-            <img class="main-quote-image" src="https://source.unsplash.com/1024x576/?nature" alt="Quote Image">
-            <div class="quote-overlay"></div>
-            <div class="quote-container">
-                <img src="img/quote-mark.svg" alt="Quote mark">
-                <div class="quote-wrapper">
-                    <p class="quote-main">Type in your quote below or click on the "Need Inspiration" button below.
-                        </p>
-                    <p class="quote-attribution">&mdash; Name Attribution</p>
+            <div id="element-to-print">
+                <img class="main-quote-image" src="img/quote-imgs/technology-1.jpg" alt="Quote Image">
+                <div class="quote-overlay"></div>
+                <div class="quote-container">
+                    <img src="img/quote-mark.svg" alt="Quote mark">
+                    <div class="quote-wrapper">
+                        <p class="quote-main">Type in your quote below or click on the "Need Inspiration" button below.
+                            </p>
+                        <p class="quote-attribution">&mdash; Name Attribution</p>
+                    </div>
                 </div>
             </div>
             <div class="input-quote-error">
@@ -231,12 +235,12 @@
                         <label for="screen">Screen</label><br>
                     </div>
                     <div class="effects-wrapper-right">
-                        <input type="radio" id="burn" class="radio-effects radioBurn" name="effects" value="burn">
-                        <label for="burn">Burn</label><br>
-                        <input type="radio" id="intensify" class="radio-effects radioIntensify" name="effects" value="intensify">
-                        <label for="intensify">Intensify</label><br>
-                        <input type="radio" id="soften" class="radio-effects radioSoft" name="effects" value="soften">
-                        <label for="soften">Soften</label><br>
+                        <input type="radio" id="color-burn" class="radio-effects radioBurn" name="effects" value="color-burn">
+                        <label for="color-burn">Burn</label><br>
+                        <input type="radio" id="saturation" class="radio-effects radioIntensify" name="effects" value="saturation">
+                        <label for="saturation">Intensify</label><br>
+                        <input type="radio" id="soft-light" class="radio-effects radioSoft" name="effects" value="soft-light">
+                        <label for="soft-light">Soften</label><br>
                     </div>
                 </div> <!-- End of effects-wrapper -->
                 <button class="edit-quote">Edit Quote</button>

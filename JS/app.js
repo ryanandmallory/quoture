@@ -54,7 +54,8 @@ const UICtrl = (function(){
         btnNeedInspiration: '.inspiration-link',
         btnQuoteSlider: '.btn-quote-slider',
         quoteCategories: '.quote-categories',
-        useThisQuote: '.use-this-quote'
+        useThisQuote: '.use-this-quote',
+        btnFinalQuoteDownload: '.final-quote-download-btn'
     }
     // Public methods
     return {
@@ -381,8 +382,34 @@ const UICtrl = (function(){
             document.querySelector('.buttons-wrapper').style.display = 'flex';
         },
         saveQuoteModal: function (){
+            const quoteColor = document.querySelector('.quote-overlay').style.background;
+            let quoteColorHex;
             document.querySelector('.final-quote-overlay-message').style.display = 'flex';
             document.querySelector('.final-quote-message').style.display = 'flex';
+            document.querySelector('.quote-overlay').style.display = 'none';
+            const findEffectRadio = function() {
+                let radios = document.getElementsByName('effects');
+                let radioEffect;
+                for (let i = 0, length = radios.length; i < length; i++) {
+                    if (radios[i].checked) {
+                        radioEffect = radios[i].id;
+                        return radioEffect
+                    }
+                }
+            }
+            // HTML2Canvas
+            html2canvas(document.getElementById("element-to-print"), {scale: 1, allowTaint : true, removeContainer: false, logging: true, letterRendering: 1, allowTaint: false, useCORS: true, foreignObjectRendering: false }).then(canvas => {
+                let ctx = canvas.getContext("2d");
+                imagestring = canvas.toDataURL("image/png");
+                ctx.globalCompositeOperation = findEffectRadio();
+                ctx.fillStyle = quoteColor;
+                ctx.fillRect(0, 0, 1600, 1000);
+                const link = document.createElement('a');
+                link.setAttribute('class', 'final-quote-display-anchor');
+                link.appendChild(canvas);
+                document.querySelector('.final-quote-display').appendChild(link);
+                document.querySelector('.final-quote-display').style.display = 'block';
+            });
         },
         exitQuoteModal: function (){
             document.querySelector('.final-quote-overlay-message').style.display = 'none';
@@ -579,6 +606,9 @@ const UICtrl = (function(){
             document.querySelector('.quote-attribution').textContent = libraryAttr.textContent;
             document.querySelector('.edit-layout-quote-main').textContent = libraryQuote.textContent;
             document.querySelector('.edit-layout-quote-attribution').textContent = libraryAttr.textContent;
+        },
+        downloadQuoteImage: function (){
+            window.location.href = window.location.pathname + window.location.search + window.location.hash;
         }
     }
 })();
@@ -691,6 +721,7 @@ const App = (function(ItemCtrl, UICtrl){
         document.querySelector(UISelectors.btnDownloadImage).addEventListener('click', UICtrl.exitQuoteModal);
         document.querySelector(UISelectors.btnNeedInspiration).addEventListener('click', UICtrl.quoteLibrary);
         document.querySelector(UISelectors.useThisQuote).addEventListener('click', UICtrl.placeLibraryQuote);
+        document.querySelector(UISelectors.btnFinalQuoteDownload).addEventListener('click', UICtrl.downloadQuoteImage);
     }
     // Public methods
     return {
