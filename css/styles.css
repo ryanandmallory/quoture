@@ -304,6 +304,7 @@ body {
 .create-quote, .final-quote {
     display: none;
     position: relative;
+    clip-path: inset(0);
 }
 .preview-quote, .reveal-quote {
     position: absolute;
@@ -399,7 +400,7 @@ body {
     height: 60px;
     z-index: 400;
     display: flex;
-    top: 75%;
+    top: 80%;
     left: 50%;
     transform: translate(-46%, -45%);
 }
@@ -418,7 +419,7 @@ body {
     border-top-right-radius: 10px;
     width: 450px;
     text-align: center;
-    top: 67.5%;
+    top: 72.5%;
     left: 40%;
     transform: translate(-46%, -45%);
     z-index: 300;
@@ -480,7 +481,7 @@ select:focus {
     position: absolute;
     bottom: 50px;
     z-index: 400;
-    top: 87%;
+    top: 90%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -501,6 +502,9 @@ select:focus {
 .edit-layout-left-quote-area {
     position: relative;
     height: 432px;
+}
+.edit-layout-quote-area {
+    clip-path: inset(0);
 }
 .edit-layout-quote-image img {
     width: 100%;
@@ -559,6 +563,12 @@ select:focus {
     position: relative;
     margin-top: 13px;
     margin-left: 13px;
+}
+.edit-layout-slide-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 9000;
 }
 .edit-layout-slide img {
     width: 100%;

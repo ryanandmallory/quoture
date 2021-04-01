@@ -250,6 +250,7 @@ const UICtrl = (function(){
             document.querySelector('.quote-overlay').style.background = editColor;
         },
         editFontSize: function () {
+            document.querySelector('#sizeRange').max = "50"
             let fontSizeVal = document.querySelector('#sizeRange').value;
 		    document.querySelector('.edit-layout-quote-main').style.fontSize = fontSizeVal + 'px';
             fontSizeVal = parseInt(Math.round(fontSizeVal * .25)) + parseInt(fontSizeVal);
@@ -289,7 +290,9 @@ const UICtrl = (function(){
             document.querySelector('.input-next-two').style.display = 'none';
             tempImage = document.querySelector('.edit-layout-quote-image-img').src;
             document.querySelector('.main-quote-image').src = tempImage;
-
+            if (document.querySelector('.edit-layout-quote-attribution').textContent === ''){
+                document.querySelector('.quote-attribution').textContent = '';
+            }
         },
         editChangeAlignment: function (event){
             const editChangeAlignListener = function (align){
@@ -316,35 +319,45 @@ const UICtrl = (function(){
                 }
                 if (code == 'ArrowUp' || event.target.classList.contains('up')) {
                     const postionWrapper = document.querySelector('.position-wrapper .up');
-		            top = top - 5 + 'px';
+                    top = top - 5 + 'px';
                     tempVal = parseInt(top) + parseInt(top)*.25 + 'px';
-                    editQuoteWrapper.style.top = top;
-		            quoteContainer.style.top = tempVal;
-                    runPositionAnimation(postionWrapper);
+                    if (parseInt(tempVal) >= 165){
+                        editQuoteWrapper.style.top = top;
+                        quoteContainer.style.top = tempVal;
+                        runPositionAnimation(postionWrapper);
+                    } else { return } 
                 }
                 if (code == 'ArrowDown' || event.target.classList.contains('down')) {
                     const postionWrapper = document.querySelector('.position-wrapper .down');
 		            top = top + 5 + 'px';
                     tempVal = parseInt(top) + parseInt(top)*.25 + 'px';
-		            editQuoteWrapper.style.top = top;
-		            quoteContainer.style.top = tempVal;
-                    runPositionAnimation(postionWrapper);
+                    if (parseInt(tempVal) <= 363){
+                        editQuoteWrapper.style.top = top;
+                        quoteContainer.style.top = tempVal;
+                        runPositionAnimation(postionWrapper);
+                    } else { return } 
                 }
                 if (code == 'ArrowLeft'  || event.target.classList.contains('left')) {
                     const postionWrapper = document.querySelector('.position-wrapper .left');
 		            left = left - 5 + 'px';
                     tempVal = parseInt(left) + parseInt(left)*.25 + 'px';
-		            editQuoteWrapper.style.left = left;
-		            quoteContainer.style.left = tempVal;
-                    runPositionAnimation(postionWrapper);
+                    if (parseInt(tempVal) >= 300){
+                        editQuoteWrapper.style.left = left;
+                        quoteContainer.style.left = tempVal;
+                        runPositionAnimation(postionWrapper);
+                        console.log("Left:" + tempVal)
+                    } else { return } 
                 }
                 if (code == 'ArrowRight'  || event.target.classList.contains('right')) {
                     const postionWrapper = document.querySelector('.position-wrapper .right');
 		            left = left + 5 + 'px';
                     tempVal = parseInt(left) + parseInt(left)*.25 + 'px';
-		            editQuoteWrapper.style.left = left;
-		            quoteContainer.style.left = tempVal;
-                    runPositionAnimation(postionWrapper);
+                    if (parseInt(tempVal) <= 800){
+                        editQuoteWrapper.style.left = left;
+                        quoteContainer.style.left = tempVal;
+                        runPositionAnimation(postionWrapper);
+                        console.log("Right:" + tempVal)
+                    } else { return } 
                 }
             }
         },
@@ -387,6 +400,9 @@ const UICtrl = (function(){
             document.querySelector('.inspiration-link').style.display = 'none';
             document.querySelector('.preview-quote').style.display = 'none';
             document.querySelector('.buttons-wrapper').style.display = 'flex';
+            if (document.querySelector('.edit-layout-quote-attribution').textContent === ''){
+                document.querySelector('.quote-attribution').textContent = '';
+            }
         },
         saveQuoteModal: function (){
             const quoteColor = document.querySelector('.quote-overlay').style.background;
@@ -641,7 +657,7 @@ const App = (function(ItemCtrl, UICtrl){
     });
     // Select Edit Theme Image
     document.addEventListener('click', function (event) {
-        if (event.target.closest(".edit-layout-slide")) {
+        if (event.target.closest(".edit-theme-image")) {
             document.querySelector('.main-quote-image').src = UICtrl.getEditThemeImage(event);
             document.querySelector('.edit-layout-quote-image-img').src = UICtrl.getEditThemeImage(event);
         }
