@@ -71,15 +71,15 @@ const UICtrl = (function(){
                 let imageTheme;
                 let clickedElem = event.target;
                 document.querySelectorAll(".theme-image").forEach((image) => {
-                    if (clickedElem.alt === 'Abstract'){ imageTheme = 'https://source.unsplash.com/1024x576/?abstract'; }
-                    if (clickedElem.alt === 'Animals'){ imageTheme = 'https://source.unsplash.com/1024x576/?animals'; }
-                    if (clickedElem.alt === 'Architecture'){ imageTheme = 'https://source.unsplash.com/1024x576/?architecture'; }
-                    if (clickedElem.alt === 'Horizon'){ imageTheme = 'https://source.unsplash.com/1024x576/?horizon'; }
-                    if (clickedElem.alt === 'Nature'){ imageTheme = 'https://source.unsplash.com/1024x576/?nature'; }
-                    if (clickedElem.alt === 'People'){ imageTheme = 'https://source.unsplash.com/1024x576/?people'; }
-                    if (clickedElem.alt === 'Rocks'){ imageTheme = 'https://source.unsplash.com/1024x576/?rocks'; }
-                    if (clickedElem.alt === 'Technology'){ imageTheme = 'https://source.unsplash.com/1024x576/?technology'; }
-                    if (clickedElem.alt === 'Water'){ imageTheme = 'https://source.unsplash.com/1024x576/?water'; }
+                    if (clickedElem.alt === 'Abstract'){ imageTheme = '../img/quote-imgs/abstract/abstract-1.jpg'; }
+                    if (clickedElem.alt === 'Animals'){ imageTheme = '../img/quote-imgs/animals/animals-1.jpg'; }
+                    if (clickedElem.alt === 'Architecture'){ imageTheme = '../img/quote-imgs/architecture/architecture-1.jpg'; }
+                    if (clickedElem.alt === 'Horizon'){ imageTheme = '../img/quote-imgs/horizon/horizon-1.jpg'; }
+                    if (clickedElem.alt === 'Nature'){ imageTheme = '../img/quote-imgs/nature/nature-1.jpg'; }
+                    if (clickedElem.alt === 'People'){ imageTheme = '../img/quote-imgs/people/people-1.jpg'; }
+                    if (clickedElem.alt === 'Rocks'){ imageTheme = '../img/quote-imgs/rocks/rocks-1.jpg'; }
+                    if (clickedElem.alt === 'Technology'){ imageTheme = '../img/quote-imgs/technology/technology-1.jpg'; }
+                    if (clickedElem.alt === 'Water'){ imageTheme = '../img/quote-imgs/water/water-1.jpg'; }
                     image.style.border = 'none';
                     clickedElem.style.border = '3px solid #e3e3e3';
                 });
@@ -88,18 +88,22 @@ const UICtrl = (function(){
         },
         getEditThemeImage: function (event) {
             if (event.target.classList.contains('edit-theme-image')){
+                let randomImage = function () {
+                    let random = Math.floor(Math.random() * 5) + 1;
+                    return random;
+                }
                 let imageTheme;
                 let clickedElem = event.target;
                 document.querySelectorAll(".edit-theme-image").forEach((image) => {
-                    if (clickedElem.alt === 'Abstract'){ imageTheme = 'https://source.unsplash.com/1024x576/?abstract/' + this.randomNum(); }
-                    if (clickedElem.alt === 'Animals'){ imageTheme = 'https://source.unsplash.com/1024x576/?animals/' + this.randomNum(); }
-                    if (clickedElem.alt === 'Architecture'){ imageTheme = 'https://source.unsplash.com/1024x576/?architecture/' + this.randomNum(); }
-                    if (clickedElem.alt === 'Horizon'){ imageTheme = 'https://source.unsplash.com/1024x576/?horizon/' + this.randomNum(); }
-                    if (clickedElem.alt === 'Nature'){ imageTheme = 'https://source.unsplash.com/1024x576/?nature/' + this.randomNum(); }
-                    if (clickedElem.alt === 'People'){ imageTheme = 'https://source.unsplash.com/1024x576/?people/' + this.randomNum(); }
-                    if (clickedElem.alt === 'Rocks'){ imageTheme = 'https://source.unsplash.com/1024x576/?rocks/' + + this.randomNum(); }
-                    if (clickedElem.alt === 'Technology'){ imageTheme = 'https://source.unsplash.com/1024x576/?technology/' + + this.randomNum(); }
-                    if (clickedElem.alt === 'Water'){ imageTheme = 'https://source.unsplash.com/1024x576/?water/' + this.randomNum(); }
+                    if (clickedElem.alt === 'Abstract'){ imageTheme = '../img/quote-imgs/abstract/abstract-' + randomImage() + '.jpg' }
+                    if (clickedElem.alt === 'Animals'){ imageTheme = '../img/quote-imgs/animals/animals-' + randomImage() + '.jpg' }
+                    if (clickedElem.alt === 'Architecture'){ imageTheme = '../img/quote-imgs/architecture/architecture-' + randomImage() + '.jpg' }
+                    if (clickedElem.alt === 'Horizon'){ imageTheme = '../img/quote-imgs/horizon/horizon-' + randomImage() + '.jpg' }
+                    if (clickedElem.alt === 'Nature'){ imageTheme = '../img/quote-imgs/nature/nature-' + randomImage() + '.jpg' }
+                    if (clickedElem.alt === 'People'){ imageTheme = '../img/quote-imgs/people/people-' + randomImage() + '.jpg' }
+                    if (clickedElem.alt === 'Rocks'){ imageTheme = '../img/quote-imgs/rocks/rocks-' + randomImage() + '.jpg' }
+                    if (clickedElem.alt === 'Technology'){ imageTheme = '../img/quote-imgs/technology/technology-' + randomImage() + '.jpg' }
+                    if (clickedElem.alt === 'Water'){ imageTheme = '../img/quote-imgs/water/water-' + randomImage() + '.jpg' }
                     image.style.border = 'none';
                     clickedElem.style.border = '3px solid #e3e3e3';
                 });
@@ -373,6 +377,9 @@ const UICtrl = (function(){
             }
         },
         revealFinalQuote: function (){
+            let tempImg;
+            tempImg = document.querySelector('.edit-layout-quote-image-img').src;
+            document.querySelector('.main-quote-image').src = tempImg;
             document.querySelector('.edit-layout').style.display = 'none';
             document.querySelector('.create-quote').style.display = 'flex';
             document.querySelector('.input-quote-error').style.display = 'none';
@@ -629,6 +636,7 @@ const App = (function(ItemCtrl, UICtrl){
         if (event.target.closest(UISelectors.themeImage)) {
             document.querySelector('.main-quote-image').src = UICtrl.getThemeImage(event);
             document.querySelector('.edit-layout-quote-image-img').src = UICtrl.getThemeImage(event);
+
         }
     });
     // Select Edit Theme Image
