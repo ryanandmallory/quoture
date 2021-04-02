@@ -1,20 +1,3 @@
-// Item Controller
-const ItemCtrl = (function(){
-    // Item Constructor
-    const Quote = function(quote, name, category){
-        this.quote = quote;
-        this.name = name;
-        this.category = category;
-    }
-    
-    // Public methods
-    return {
-        getItems: function(){
-            return Quote.quote;
-        },
-    }
-})();
-
 // UI Controller
 const UICtrl = (function(){
     const UISelectors = {
@@ -637,7 +620,7 @@ const UICtrl = (function(){
 })();
 
 //App Controller — the starting point
-const App = (function(ItemCtrl, UICtrl){
+const App = (function(UICtrl){
 
     const UISelectors = UICtrl.getSelectors();
     // Select Theme Color
@@ -704,7 +687,6 @@ const App = (function(ItemCtrl, UICtrl){
     // Reveal edit mode
     document.addEventListener('click', function (event) {
         if (event.target.closest(UISelectors.btnRevealQuote)) {
-            console.log("Click button call allowEditQuote method");
             UICtrl.allowEditQuote(event);
         };
     });
@@ -751,12 +733,9 @@ const App = (function(ItemCtrl, UICtrl){
     return {
         // Fetch items from data structure or Items Controller
         init: function(){
-            //Set the initial state
-            const items = ItemCtrl.getItems();
-            // Load event listeners
             loadEventListeners();
         }
     }
-})(ItemCtrl, UICtrl);
+})(UICtrl);
 App.init();
 
